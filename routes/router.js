@@ -1,23 +1,38 @@
 import express from "express";
-import { controllers } from "../controllers/controller.js";
-
+import { controller } from "../controllers/controller.js";
 const router = express.Router();
 
-router.get("/", controllers.home);
+router.get("/", controller.home);
 
-router.get("/about", controllers.about);
+router.get("/about", controller.about);
 
-router.get("/contact", controllers.contact);
+router.get("/contact", controller.contactForm);
 
-router.get("/login", controllers.login);
+router.get("/404", controller.notFound);
 
-router.get("/register", controllers.register);
+router.get("/login", controller.loginForm);
 
-router.get("/update", controllers.update);
+router.get("/register", controller.registerForm);
 
-router.get("/admin", controllers.admin);
+router.get("/update", controller.updateForm);
+
+router.get("/admin", controller.admin);
+
+router.post("/register", controller.register);
+
+router.post("/login", controller.login);
+
+router.put("/update/:id", controller.update);
+
+router.delete("/delete/:id", controller.deleteUser);
+
+router.put("/skater/status/:id", controller.setSkaterStatus);
 
 
-router.get("*", controllers.notFound);
 
-export default router
+
+
+
+
+router.get("*", controller.notFound);
+export default router;

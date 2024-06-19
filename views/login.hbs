@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="estilos.css" />
-  </head>
-  <body>
-    <h1>Skate Park</h1>
-
-    <div class="py-5">
-      <h2>Iniciar Sesión</h2>
-      <hr class="w-50" />
-
-      <form>
-        <div class="form-group">
-          <div class="form-group">
-            <label>Email</label>
-            <input class="form-control w-50 m-auto" />
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input class="form-control w-50 m-auto" />
-          </div>
+<div class="col-md-4 mx-auto">
+    <h2 class="text-center">Iniciar sesión</h2>
+    <form action="/login" method="POST">
+    <div>
+        {{#if errors}}
+        <div>
+            {{#each errors}}
+            <div class="alert alert-danger" role="alert">
+                {{this.msg}}
+            </div>
+            {{/each}}
         </div>
-        <button class="btn btn-success mb-3">Ingresar</button>
-        <p>¿Aún no tienes cuenta? <a href="#">Regístrate</a></p>
-      </form>
+       {{/if}}
     </div>
-  </body>
-</html>
+    <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" placeholder="Ej. WcWp2@example.com" value="{{old.email}}" >
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" placeholder="Ej. ********">
+    </div>
+    
+    <div>
+        <input class="btn btn-success d-block my w-100" type="submit" value="Inicia sesion">
+    </div>
+    
+    </form>
+</div>
